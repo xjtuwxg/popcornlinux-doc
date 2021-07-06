@@ -10,11 +10,12 @@ Welcome to Popcorn Linux's documentation!
    :maxdepth: 2
    :caption: Contents:
 
+   build_kernel
+   build_compiler
 
+.. Indices and tables
+.. ==================
 
-Indices and tables
-==================
-
-* :ref:`genindex`
-* :ref:`modindex`
-* :ref:`search`
+.. * :ref:`genindex`
+.. * :ref:`modindex`
+.. * :ref:`search`
