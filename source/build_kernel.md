@@ -69,7 +69,7 @@ Build the x86_64 kernel and arm64 kernel respectively:
 ```
 
 ```
-❯ cp linux-arm/kernel/popcorn/configs/config-x86_64-qemu linux-arm/.config
+❯ cp linux-arm/kernel/popcorn/configs/config-arm64-qemu linux-arm/.config
 ❯ CROSS_COMPILE=aarch64-linux-gnu- ARCH="arm64" make -C linux-arm -j8
 ```
 
