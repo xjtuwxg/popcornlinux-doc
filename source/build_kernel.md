@@ -30,7 +30,7 @@ i) Install dependency packages:
 ```
 ii) Download QEMU images:
 
-[popcorn-VMs-ubuntu2004-4G.tar.gz](https://drive.google.com/file/d/1C7_h5K_fasDcPGQhZvMxjEcqapxNOUFF/view?usp=sharing) (807MB downloaded; 4GB x86.img, 4GB arm.img after extract the tarball).
+[PopcornLinux-VMs-Debian.tar.gz](https://drive.google.com/file/d/1GiDcWRiNYRzLHhzJeKpiK4uSGcimTTxe/view?usp=sharing) (610MB downloaded; 4GB x86.img, 2GB arm.img after extract the tarball).
 
 iii) Configure host network
 
