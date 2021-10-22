@@ -1,6 +1,6 @@
 # Build the Popcorn Linux Kernel
 
-## Running Popcorn Linux on Virtual Machines (QEMU)
+## Running Popcorn Linux on QEMU Virtual Machines (recommended)
 We can run Popcorn Linux on real x86_64 and arm64 machines connected using ConnectX-4 InfiniBand. However, it's easier to set up the environment with QEMU virtual machines. This guide describes how to set up a testing environment for Popcorn Linux using QEMU VMs.
 
 ```
