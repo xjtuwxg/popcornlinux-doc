@@ -5,9 +5,9 @@ Popcorn compiler was tested to build on Ubuntu 18.04. It relies on several depen
 ## Build popcorn compiler using docker (recommended)
 First, you need to install [docker](https://docs.docker.com/engine/install/). You can find the method to install docker on ubuntu [here](https://docs.docker.com/engine/install/ubuntu/).
 
-Next, download the Dockerfile for popcorn-compiler. You can find the Dockerfile [here](https://raw.githubusercontent.com/xjtuwxg/popcorn-compiler/main/docker/Dockerfile), or download the entire popcorn-compiler repository as follows:
+Next, download the Dockerfile for popcorn-compiler. You can find the Dockerfile [here](https://raw.githubusercontent.com/ssrg-vt/popcorn-compiler/main/docker/Dockerfile), or download the entire popcorn-compiler repository as follows:
 ```
-❯ git clone -b main --single-branch https://github.com/xjtuwxg/popcorn-compiler.git
+❯ git clone -b main --single-branch https://github.com/ssrg-vt/popcorn-compiler.git
 ❯ cd popcorn-compiler/docker
 ❯ docker build -t popcorn-compiler:main .
 ```
