@@ -12,6 +12,7 @@ Welcome to Popcorn Linux's documentation!
 
    build_kernel
    build_compiler
+   run_applications
 
 .. Indices and tables
 .. ==================

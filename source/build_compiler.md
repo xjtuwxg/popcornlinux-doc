@@ -15,7 +15,9 @@ Last, you can build a test application using the docker image built from the 2nd
 ```
 ❯ ls ./app
 Makefile test.c
-❯ docker run --rm -v $(pwd)/app:/code/app popcorn-compiler:main make -C /code/app
+❯ docker run --rm --user "$(id -u):$(id -g)" \
+    -v $(pwd)/app:/code/app popcorn-compiler:main \
+    make -C /code/app
 make: Entering directory '/code/app'
  [MKDIR] build_aarch64/
  [CC] test.c
@@ -31,6 +33,8 @@ make: Leaving directory '/code/app'
 ❯ ls ./app
 build_aarch64  build_x86-64  Makefile  test_aarch64  test_aarch64.o  test.c  test_x86-64  test_x86_64.o
 ```
+
+Next, follow this [link](run_applications#run-the-pingpong-application) to run the popcorn applications.
 
 ## Build popcorn compiler manually
 ### Install pre-requisites and download the source code
