@@ -1,7 +1,8 @@
 # Run applications on Popcorn Linux
 
 ## Run the pingpong application
-The pingpong application is located at `popcorn-compiler/docker/pingpong`. You need to follow this [link](build_compiler#build-popcorn-compiler-using-docker-recommended) to build it, and then send the generated popcorn binaries (i.e., `pingpong_x86-64`, `pingpong_aarch64`) to the popcorn guest OSes.
+The pingpong application is located at `popcorn-compiler/docker/pingpong`. You need to follow this [link](build_compiler.md#build-popcorn-compiler-using-docker-recommended) to build it, and then send the generated popcorn binaries (i.e., `pingpong_x86-64`, `pingpong_aarch64`) to the popcorn guest OSes.
+Make sure the popcorn binaries are at the **same location** on each guest OS.
 
 Next, rename the binaries on each VM:
 ```

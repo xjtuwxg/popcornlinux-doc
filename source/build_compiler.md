@@ -34,7 +34,7 @@ make: Leaving directory '/code/app'
 build_aarch64  build_x86-64  Makefile  test_aarch64  test_aarch64.o  test.c  test_x86-64  test_x86_64.o
 ```
 
-Next, follow this [link](run_applications#run-the-pingpong-application) to run the popcorn applications.
+Next, follow this [link](run_applications.md#run-the-pingpong-application) to run the popcorn applications.
 
 ## Build popcorn compiler manually
 ### Install pre-requisites and download the source code
