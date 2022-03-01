@@ -1,10 +1,14 @@
 # Run applications on Popcorn Linux
 
 ## Run the pingpong application
-The pingpong application is located at `popcorn-compiler/docker/pingpong`. You need to follow this [link](build_compiler.md#build-popcorn-compiler-using-docker-recommended) to build it, and then send the generated popcorn binaries (i.e., `pingpong_x86-64`, `pingpong_aarch64`) to the popcorn guest OSes.
+The pingpong application is located at `popcorn-compiler/docker/pingpong`. You need to follow this [link](build_compiler.md#build-popcorn-compiler-using-docker-recommended) to build it, and then send **both** of the generated popcorn binaries (i.e., `pingpong_x86-64`, `pingpong_aarch64`) to the popcorn guest OSes.
 Make sure the popcorn binaries are at the **same location** on each guest OS.
+```
+❯ scp pingpong_x86-64 pingpong_aarch64 root@10.2.0.2:
+❯ scp pingpong_x86-64 pingpong_aarch64 root@10.2.1.2:
+```
 
-Next, rename the binaries on each VM:
+Next, make a copy of the binary and rename the binaries on each VM. You need to have the following **three binaries** on each VM:
 ```
 root@x86:~# cp pingpong_x86-64 pingpong
 root@x86:~# ls -lth
@@ -21,7 +25,7 @@ total 53M
 -rwxr-xr-x 1 root root 5.5M Feb 28 18:38 pingpong_aarch64
 -rwxr-xr-x 1 root root 6.5M Feb 28 18:38 pingpong_x86-64
 ```
-Run pingpong from x86 side, and you should see the kernel of code migration:
+Finally, run `pingpong` from x86 side, and you should see the kernel of code migration:
 ```
 root@x86:~# ./pingpong                                                              │root@arm:~# cp pingpong_aarch64 pingpong                                           
 + ping pong hopping between two nodes                                               │root@arm:~# [ 4367.817330] remote_worker_main: [360] for [380/0]
@@ -37,5 +41,4 @@ root@x86:~# ./pingpong                                                          
 [ 4364.026981] process_remote_syscall: remote system call num 35 (nanosleep) receiv0│50, sigpending = 0
 [ 4364.030077] process_remote_syscall: sp = 5dda9649e5e15000                        │[ 4367.889280] invoke_syscall: Remote syscall request for syscall no 101 (nanosleep
 [ 4364.030990] > Parameters are 3fffbfef20, 3fffbfef20, 0, 0, 0, 0                  │), PID 361
-
 ```
