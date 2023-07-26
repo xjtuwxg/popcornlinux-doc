@@ -1,6 +1,6 @@
 # Build the Popcorn Linux Kernel
 
-## Running Popcorn Linux on Virtual Machines (QEMU)
+## Running Popcorn Linux on QEMU Virtual Machines (recommended)
 We can run Popcorn Linux on real x86_64 and arm64 machines connected using ConnectX-4 InfiniBand. However, it's easier to set up the environment with QEMU virtual machines. This guide describes how to set up a testing environment for Popcorn Linux using QEMU VMs.
 
 ```
@@ -53,7 +53,7 @@ Now you should be able to see `tap0` and `tap1` on your host machine:
 ```
 More detail can be found here to set up the host network.
 
-## Build the Popcorn Linux kernel from the source
+### Build the Popcorn Linux kernel from the source
 Download the source code:
 ```
 ❯ git clone --depth=1 -b main --single-branch https://github.com/ssrg-vt/popcorn-kernel.git linux-x86
@@ -73,7 +73,7 @@ Build the x86_64 kernel and arm64 kernel respectively:
 ❯ CROSS_COMPILE=aarch64-linux-gnu- ARCH="arm64" make -C linux-arm -j8
 ```
 
-## Boot the VMs
+### Boot the VMs
 Boot the VMs with newly built kernels and the `tap` network:
 ```
 sudo qemu-system-x86_64 \
@@ -134,3 +134,48 @@ You could see the similar message from x86 console:
 [  132.348349]   1 identified as arm
 ```
 Congratulation! Now, the VMs are connected over the messaging layer, and ready to migrate threads!
+
+## Building and running Popcorn Linux kernel on real hardware
+On your target machine (x86_64 or arm64), download the source code:
+```
+git clone --depth=1 -b main --single-branch https://github.com/ssrg-vt/popcorn-kernel.git
+```
+Create a `build` directory to build the kernel.
+```
+cd popcorn-kernel
+mkdir build
+cd build
+make -C .. O=$(pwd) defconfig
+```
+This will use the default kernel configuration but it often causes issues. You can copy the kernel config on your machine as the template:
+```
+cp /boot/config-5.11.0-34-generic .config
+```
+You also need to disable some CONFIG_ flags, you can update it with this script:
+```
+../update_config.sh
+```
+Next, build the kernel with:
+```
+make -j8 bindeb-pkg LOCALVERSION=-popcorn
+```
+You should be able to see the kernel in the parent folder:
+```
+$ ls -lth ..
+linux-image-5.2.21-popcorn_5.2.21-popcorn-1_arm64.deb
+...
+```
+
+You can install the popcorn linux kernel by:
+```
+sudo dpkg -i linux-image-5.2.21-popcorn_5.2.21-popcorn-1_arm64.deb
+```
+After reboot the machine, select the correct kernel. You are having the popcorn kernel installed.
+
+<!---
+
+## Building and Running Popcorn Linux on CloudLab
+
+
+https://pages.cs.wisc.edu/~markm/kernel-build-cloudlab.html
+-->
